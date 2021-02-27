@@ -9,6 +9,7 @@ public class System {
     private Long id;
 
     private String name;
+    private String folder;
     private Long wr_anzahl;
     private Long verguetung;
 
@@ -16,9 +17,10 @@ public class System {
 
     }
 
-    public System(Long id, String name, Long wr_anzahl, Long verguetung) {
+    public System(Long id, String name, String folder, Long wr_anzahl, Long verguetung) {
         this.id = id;
         this.name = name;
+        this.folder = folder;
         this.wr_anzahl = wr_anzahl;
         this.verguetung = verguetung;
     }
@@ -37,6 +39,14 @@ public class System {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getFolder() {
+        return folder;
+    }
+
+    public void setFolder(String folder) {
+        this.folder = folder;
     }
 
     public Long getWr_anzahl() {

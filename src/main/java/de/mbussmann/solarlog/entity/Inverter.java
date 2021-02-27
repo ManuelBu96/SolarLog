@@ -12,6 +12,7 @@ public class Inverter {
     @ManyToOne
     private System system;
 
+    private String serial;
     private String typ;
     private String name;
     private Long strings;
@@ -22,9 +23,10 @@ public class Inverter {
 
     }
 
-    public Inverter(Long id, System system, String typ, String name, Long strings, Long peak, String orientation) {
+    public Inverter(Long id, System system, String serial, String typ, String name, Long strings, Long peak, String orientation) {
         this.id = id;
         this.system = system;
+        this.serial = serial;
         this.typ = typ;
         this.name = name;
         this.strings = strings;
@@ -46,6 +48,14 @@ public class Inverter {
 
     public void setSystem(System system) {
         this.system = system;
+    }
+
+    public String getSerial() {
+        return serial;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
     }
 
     public String getTyp() {
