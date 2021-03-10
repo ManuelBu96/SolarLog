@@ -25,7 +25,6 @@ public class EntityConverter {
      * @param entity: The Entity to be converted
      * @return a new {@link UserDto} with values provided by the entity
      */
-    /*
     public UserDto userEntityToDtp(User entity) {
         UserDto dto = new UserDto();
         dto.setEmail(entity.getEmail());
@@ -33,8 +32,6 @@ public class EntityConverter {
         dto.setLastName(entity.getLastName());
         dto.setRole(entity.getRole().toString());
         dto.setId(entity.getId());
-        dto.setIsChatEnabled(entity.isChatEnabled() != null ? entity.isChatEnabled() : false);
         return dto;
     }
-    */
 }

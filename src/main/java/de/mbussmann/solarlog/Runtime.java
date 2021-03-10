@@ -13,7 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  */
-package de.mbussmann.solarlog.logging;
+package de.mbussmann.solarlog;
+
+import de.mbussmann.solarlog.logging.Logger;
 
 /**
  * This class is called when the jar package is executed via runtime.
