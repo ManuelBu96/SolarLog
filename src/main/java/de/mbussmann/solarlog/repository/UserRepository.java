@@ -39,7 +39,7 @@ public class UserRepository implements UserService {
     @Override
     public UserDto getUserById(Long id) throws UserException {
         try{
-            return em.createQuery("SELECT new de.hsos.swa.online.forum.boundary.dto.UserDto( " +
+            return em.createQuery("SELECT new de.mbussmann.solarlog.boundary.dto.UserDto( " +
                     "u.id, u.firstName, u.lastName, u.role, u.email) "
                     +"FROM User u where u.id = :id", UserDto.class)
                     .setParameter("id", id)

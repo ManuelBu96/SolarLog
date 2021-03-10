@@ -1,0 +1,13 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "solarLog",
+            "Group": "Servers",
+            "Port": 5432,
+            "Username": "test",
+            "Host": "localhost",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres"
+        }
+    }
+}
