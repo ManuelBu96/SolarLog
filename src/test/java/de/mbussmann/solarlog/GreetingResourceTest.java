@@ -1,4 +1,4 @@
-package org.acme.getting.started;
+package de.mbussmann.solarlog;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
