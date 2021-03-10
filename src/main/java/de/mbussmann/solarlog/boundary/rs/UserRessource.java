@@ -25,7 +25,7 @@ import de.mbussmann.solarlog.control.UserService;
 import de.mbussmann.solarlog.util.exceptions.UserException;
 
 /**
- * @author Niklas Meyer
+ * @author Manuel Bußmann
  */
 @RequestScoped
 @Path("/user")

@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 /**
  * utility Class for mapping Entities to their respective DTOs.
- * 
- * @author Manuel Bussmann
+ *
+ * @author Manuel Bußmann
  */
 @Dependent
 public class EntityConverter {

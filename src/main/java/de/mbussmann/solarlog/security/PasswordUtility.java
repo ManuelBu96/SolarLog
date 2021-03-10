@@ -8,8 +8,8 @@ import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * Utility Class for handling password Hashing.
- * 
- * @author Niklas Meyer
+ *
+ * @author Manuel Bußmann
  */
 @ApplicationScoped
 public class PasswordUtility {

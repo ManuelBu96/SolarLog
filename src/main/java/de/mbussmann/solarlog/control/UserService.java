@@ -5,7 +5,7 @@ import de.mbussmann.solarlog.entity.User;
 import de.mbussmann.solarlog.util.exceptions.UserException;
 
 /**
- * @author Niklas Meyer
+ * @author Manuel Bußmann
  */
 public interface UserService {
     UserDto getUserById(Long id) throws UserException;

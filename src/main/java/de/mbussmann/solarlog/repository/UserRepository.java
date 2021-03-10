@@ -20,7 +20,7 @@ import java.util.List;
 
 
 /**
- * @author Niklas Meyer
+ * @author Manuel Bußmann
  */
 @ApplicationScoped
 public class UserRepository implements UserService {

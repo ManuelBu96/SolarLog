@@ -20,7 +20,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 
 /**
- * @author Niklas Meyer
+ * @author Manuel Bußmann
  */
 @Path("authentication/register")
 @RequestScoped

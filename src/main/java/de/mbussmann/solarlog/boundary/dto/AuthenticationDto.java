@@ -3,7 +3,7 @@ package de.mbussmann.solarlog.boundary.dto;
 import java.io.Serializable;
 
 /**
- * @author Niklas Meyer
+ * @author Manuel Bußmann
  */
 public class AuthenticationDto implements Serializable {
 

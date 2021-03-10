@@ -16,8 +16,8 @@ import javax.enterprise.context.ApplicationScoped;
 
 /**
  * Class for JWT Generation.
- * 
- * @author Niklas Meyer
+ *
+ * @author Manuel Bußmann
  */
 @ApplicationScoped
 public class JWTUtility {

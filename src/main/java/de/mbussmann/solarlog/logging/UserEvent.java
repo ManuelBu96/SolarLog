@@ -5,7 +5,7 @@ import javax.enterprise.context.ApplicationScoped;
 import org.jboss.logging.Logger;
 
 /**
- * @author Manuel Bussmann
+ * @author Manuel Bußmann
  */
 @ApplicationScoped
 public class UserEvent {

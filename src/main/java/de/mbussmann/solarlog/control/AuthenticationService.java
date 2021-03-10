@@ -5,7 +5,7 @@ import de.mbussmann.solarlog.boundary.dto.RegistrationDto;
 import de.mbussmann.solarlog.util.exceptions.AuthenticationException;
 
 /**
- * @author Niklas Meyer
+ * @author Manuel Bußmann
  */
 public interface AuthenticationService {
     
