@@ -1,4 +1,4 @@
-package de.mbussmann.solarlog.dl;
+package de.mbussmann.solarlog.api.dl;
 
 public class FehlerCode {
     private Long wr;
