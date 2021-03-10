@@ -13,10 +13,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  */
-package me.meloni.SolarLogAPI.FTPServerInteraction;
+package de.mbussmann.solarlog.api.ftpServerInteraction;
 
-import me.meloni.SolarLogAPI.FileInteraction.WorkingDirectory;
-import me.meloni.SolarLogAPI.Handling.Logger;
+import de.mbussmann.solarlog.api.fileInteraction.WorkingDirectory;
+import de.mbussmann.solarlog.logging.Logger;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;

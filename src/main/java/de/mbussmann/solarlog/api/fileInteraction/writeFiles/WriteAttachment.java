@@ -1,4 +1,4 @@
-package me.meloni.SolarLogAPI.FileInteraction.WriteFiles;
+package de.mbussmann.solarlog.api.fileInteraction.writeFiles;
 
 import java.io.File;
 import java.io.FileOutputStream;

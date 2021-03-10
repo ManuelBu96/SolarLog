@@ -1,4 +1,4 @@
-package me.meloni.SolarLogAPI;
+package de.mbussmann.solarlog.api;
 
 import java.util.HashMap;
 import java.util.Map;

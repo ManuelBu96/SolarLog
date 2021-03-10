@@ -13,11 +13,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  */
-package me.meloni.SolarLogAPI;
+package de.mbussmann.solarlog.api;
 
-import me.meloni.SolarLogAPI.DataConversion.Entries;
-import me.meloni.SolarLogAPI.DataConversion.GetStartOf;
-import me.meloni.SolarLogAPI.FileInteraction.Tools.FileObject;
+import de.mbussmann.solarlog.api.dataConversion.Entries;
+import de.mbussmann.solarlog.api.dataConversion.GetStartOf;
+import de.mbussmann.solarlog.api.fileInteraction.tools.FileObject;
 import org.json.simple.JSONObject;
 
 import java.time.LocalDate;

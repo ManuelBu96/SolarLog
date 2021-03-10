@@ -1,6 +1,6 @@
-package me.meloni.SolarLogAPI.FileInteraction.Tools;
+package de.mbussmann.solarlog.api.fileInteraction.tools;
 
-import me.meloni.SolarLogAPI.Inverter;
+import de.mbussmann.solarlog.api.Inverter;
 
 import java.io.Serializable;
 import java.util.Date;

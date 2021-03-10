@@ -1,11 +1,11 @@
-package me.meloni.SolarLogAPI.DatabaseInteraction;
+package de.mbussmann.solarlog.api.databaseInteraction;
 
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.InfluxDBClientFactory;
 import com.influxdb.client.WriteApi;
 import com.influxdb.client.domain.WritePrecision;
 import com.influxdb.client.write.Point;
-import me.meloni.SolarLogAPI.SolarMap;
+import de.mbussmann.solarlog.api.SolarMap;
 
 public class InfluxDBInteraction {
     InfluxDBClient db;

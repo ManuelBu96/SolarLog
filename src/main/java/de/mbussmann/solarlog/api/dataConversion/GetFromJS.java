@@ -1,10 +1,10 @@
-package me.meloni.SolarLogAPI.DataConversion;
+package de.mbussmann.solarlog.api.dataConversion;
 
-import me.meloni.SolarLogAPI.FileInteraction.GetFile;
-import me.meloni.SolarLogAPI.FileInteraction.ReadFiles.GetFileContent;
-import me.meloni.SolarLogAPI.Handling.Logger;
-import me.meloni.SolarLogAPI.Inverter;
-import me.meloni.SolarLogAPI.InverterMap;
+import de.mbussmann.solarlog.api.fileInteraction.GetFile;
+import de.mbussmann.solarlog.api.fileInteraction.readFiles.GetFileContent;
+import de.mbussmann.solarlog.logging.Logger;
+import de.mbussmann.solarlog.api.Inverter;
+import de.mbussmann.solarlog.api.InverterMap;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;

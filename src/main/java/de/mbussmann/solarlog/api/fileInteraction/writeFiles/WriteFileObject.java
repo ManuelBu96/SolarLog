@@ -1,9 +1,9 @@
-package me.meloni.SolarLogAPI.FileInteraction.WriteFiles;
+package de.mbussmann.solarlog.api.fileInteraction.writeFiles;
 
-import me.meloni.SolarLogAPI.FileInteraction.GetFile;
-import me.meloni.SolarLogAPI.FileInteraction.Tools.FileAttributes;
-import me.meloni.SolarLogAPI.FileInteraction.Tools.FileObject;
-import me.meloni.SolarLogAPI.Handling.Logger;
+import de.mbussmann.solarlog.api.fileInteraction.GetFile;
+import de.mbussmann.solarlog.api.fileInteraction.tools.FileAttributes;
+import de.mbussmann.solarlog.api.fileInteraction.tools.FileObject;
+import de.mbussmann.solarlog.logging.Logger;
 
 import java.io.File;
 import java.io.FileOutputStream;

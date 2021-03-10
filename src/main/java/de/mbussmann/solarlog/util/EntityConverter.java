@@ -1,7 +1,7 @@
 package de.mbussmann.solarlog.util;
 
-import de.hsos.swa.online.forum.boundary.dto.*;
-import de.hsos.swa.online.forum.entity.*;
+import de.mbussmann.solarlog.boundary.dto.*;
+import de.mbussmann.solarlog.entity.*;
 
 import javax.enterprise.context.Dependent;
 import java.util.List;
@@ -25,6 +25,7 @@ public class EntityConverter {
      * @param entity: The Entity to be converted
      * @return a new {@link UserDto} with values provided by the entity
      */
+    /*
     public UserDto userEntityToDtp(User entity) {
         UserDto dto = new UserDto();
         dto.setEmail(entity.getEmail());
@@ -35,4 +36,5 @@ public class EntityConverter {
         dto.setIsChatEnabled(entity.isChatEnabled() != null ? entity.isChatEnabled() : false);
         return dto;
     }
+    */
 }

@@ -13,10 +13,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  */
-package me.meloni.SolarLogAPI.FileInteraction.Tools;
+package de.mbussmann.solarlog.api.fileInteraction.tools;
 
-import me.meloni.SolarLogAPI.DataConversion.FileInformation;
-import me.meloni.SolarLogAPI.DataConversion.GetDataSection;
+import de.mbussmann.solarlog.api.dataConversion.FileInformation;
+import de.mbussmann.solarlog.api.dataConversion.GetDataSection;
 
 import java.io.File;
 import java.io.IOException;

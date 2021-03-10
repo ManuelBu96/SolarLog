@@ -1,4 +1,4 @@
-package de.mbussmann.solarlog.api.dl;
+package de.mbussmann.solarlog.api.dataLogic;
 
 public class BaseVars {
     private Long anlagenKWP;
