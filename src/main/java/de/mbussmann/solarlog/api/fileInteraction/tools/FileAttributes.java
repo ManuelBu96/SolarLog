@@ -24,11 +24,11 @@ public class FileAttributes {
     /**
      * The path of the filetype attribute
      */
-    public static final String fileType = "me.meloni.SolarLogFile";
+    public static final String fileType = "de.mbussmann.solarlog.SolarLogFile";
     /**
      * The path of the fileversion attribute
      */
-    public static final String fileVersion = "me.meloni.SolarLogFile.FileVersion";
+    public static final String fileVersion = "de.mbussmann.solarlog.SolarLogFile.FileVersion";
 
     /**
      * The value of the fileversion attribute

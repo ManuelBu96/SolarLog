@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/17669445/java-example-dynamic-job-scheduling-with-quartz
+https://quarkus.io/guides/quartz
