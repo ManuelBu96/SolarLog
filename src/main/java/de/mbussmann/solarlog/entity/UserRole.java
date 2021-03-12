@@ -5,5 +5,6 @@ package de.mbussmann.solarlog.entity;
  */
 public enum UserRole {
     ADMINISTRATOR,
-    USER
+    MANAGER,
+    USER,
 }

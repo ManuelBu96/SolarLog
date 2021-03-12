@@ -21,10 +21,6 @@ import javax.enterprise.context.ApplicationScoped;
  */
 @ApplicationScoped
 public class JWTUtility {
-
-
-
-    
     /** 
      * Generates JsonWebToken based on provided information.
      * 
@@ -58,7 +54,6 @@ public class JWTUtility {
         return claimsBuilder.jws().keyId(privateKeyLocation).sign(privateKey);
     }
 
-    
     /**
      * Returns a {@link PrivateKey} Object representing the key in the path provided.  
      * 
@@ -76,7 +71,6 @@ public class JWTUtility {
             return decodePrivateKey(new String(tmp, 0, length, "UTF-8"));
         }
     }
-
     
     /**
      * Converts the private Key to the Java Implementation of a private Key 
@@ -95,7 +89,6 @@ public class JWTUtility {
         return kf.generatePrivate(keySpec);
     }
 
-    
     /**
      * Returns the cryptographic Key as a Byte[] 
      * 
@@ -106,7 +99,6 @@ public class JWTUtility {
         final String normalizedPem = removeBeginEnd(pemEncoded);
         return Base64.getDecoder().decode(normalizedPem);
     }
-
     
     /** 
      * Returns the cryptographic Key String represantation without the Begin and End Delimiter
@@ -121,7 +113,6 @@ public class JWTUtility {
         return pem.trim();
     }
 
-    
     /** 
      * Returns the current Time in seconds since 01.01.1970
      * @return int the Time in seconds

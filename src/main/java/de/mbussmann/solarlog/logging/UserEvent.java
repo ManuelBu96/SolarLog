@@ -1,7 +1,6 @@
 package de.mbussmann.solarlog.logging;
 
 import javax.enterprise.context.ApplicationScoped;
-
 import org.jboss.logging.Logger;
 
 /**

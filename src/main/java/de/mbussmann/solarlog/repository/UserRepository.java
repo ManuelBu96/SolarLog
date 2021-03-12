@@ -7,7 +7,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import javax.transaction.Transactional;
 
-
 import de.mbussmann.solarlog.boundary.dto.UserDto;
 import de.mbussmann.solarlog.control.UserService;
 import de.mbussmann.solarlog.entity.User;
@@ -15,9 +14,6 @@ import de.mbussmann.solarlog.entity.UserRole;
 import de.mbussmann.solarlog.logging.UserEvent;
 import de.mbussmann.solarlog.util.exceptions.ExceptionReason;
 import de.mbussmann.solarlog.util.exceptions.UserException;
-
-import java.util.List;
-
 
 /**
  * @author Manuel Bußmann

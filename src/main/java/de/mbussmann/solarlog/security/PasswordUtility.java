@@ -17,7 +17,7 @@ public class PasswordUtility {
     /**
      * Number of Hash Rounds the BCrypt Algorith should use
      */
-    @ConfigProperty(name = "de.hsos.swa.password.rounds")
+    @ConfigProperty(name = "de.mbussmann.solarlog.rounds")
     private int numberOfRounds;
 
 

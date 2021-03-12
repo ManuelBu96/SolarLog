@@ -1,5 +1,3 @@
-
-
 CREATE TABLE users (
     id SERIAL NOT NULL,
     email text NOT NULL UNIQUE,
