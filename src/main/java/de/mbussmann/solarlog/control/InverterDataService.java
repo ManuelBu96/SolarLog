@@ -1,4 +1,5 @@
 package de.mbussmann.solarlog.control;
 
-public interface InverterTimeService {
+public interface InverterDataService {
+
 }
