@@ -40,3 +40,7 @@ nb-configuration.xml
 
 #Local Files
 data/
+
+#Local DockerFiles
+# Postgres Database
+postgres-data/

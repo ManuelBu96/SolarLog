@@ -11,7 +11,8 @@ services:
       POSTGRES_USER: test
       POSTGRES_PASSWORD: test
       POSTGRES_DB: solarlog
-
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
 
   solarlog-pgadmin:
     image: dpage/pgadmin4
