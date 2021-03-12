@@ -11,9 +11,11 @@ services:
       POSTGRES_USER: test
       POSTGRES_PASSWORD: test
       POSTGRES_DB: solarlog
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+#For Production
+#    volumes:
+#      - ./postgres-data:/var/lib/postgresql/data
 
+#Only for Development
   solarlog-pgadmin:
     image: dpage/pgadmin4
     restart: always
