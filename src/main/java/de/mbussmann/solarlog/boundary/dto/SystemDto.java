@@ -1,53 +1,38 @@
-package de.mbussmann.solarlog.entity;
+package de.mbussmann.solarlog.boundary.dto;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "system", schema = "public")
-public class System {
-    @Id
-    private Long id;
-
+public class SystemDto {
     private String name;
     private String folder;
-    @Column(name = "started_at")
     private Timestamp startedAt;
     private Long serial;
     private Long inverters;
     private Long compensation;
 
-    public System() {
+    /**
+     * Default Constructor
+     */
+    public SystemDto() {
 
     }
 
-    public System(Long id, String name, String folder, Long inverters, Long compensation) {
-        this.id = id;
-        this.name = name;
-        this.folder = folder;
-        this.inverters = inverters;
-        this.compensation = compensation;
-    }
-
-    public System(Long id, String name, String folder, Timestamp startedAt, Long serial, Long inverters, Long compensation) {
-        this.id = id;
+    /**
+     * Constructor SystemDto
+     * @param name Name of the System
+     * @param startedAt Timestamp of the System start
+     * @param serial Serial from the SolarLog
+     * @param inverters Count for the Inverter
+     * @param compensation Compensation for feed-in
+     */
+    public SystemDto(String name, String folder, Timestamp startedAt, Long serial, Long inverters, Long compensation) {
         this.name = name;
         this.folder = folder;
         this.startedAt = startedAt;
         this.serial = serial;
         this.inverters = inverters;
         this.compensation = compensation;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
