@@ -3,8 +3,10 @@ package de.mbussmann.solarlog.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "inverter", schema = "public")
 public class Inverter {
     @Id
     private Long id;
