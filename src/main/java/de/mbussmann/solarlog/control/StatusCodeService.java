@@ -10,7 +10,6 @@ import java.util.List;
  */
 public interface StatusCodeService {
     void createStatusCode(StatusCodeDto newStatusCode);
-    StatusCodeDto getStatusCode(Long statusCode);
+    StatusCodeDto getStatusCode(Long code);
     List<StatusCodeDto> getStatusCode(String inverterTyp);
-    StatusCode getEntityById(Long id);
 }

@@ -98,6 +98,7 @@ public class EntityConverter {
     public List<InverterDto> inverterEntityListDto(List<Inverter> entityList) {
         return entityList.stream().map(this::inverterEntityDto).collect(Collectors.toList());
     }
+
     /**
      * Converts a {@link StatusCode} instance to a {@link StatusCodeDto} instance
      *
@@ -113,6 +114,20 @@ public class EntityConverter {
     }
 
     /**
+     * Converts a List of {@link StatusCode} instance to a List of {@link StatusCodeDto}
+     * instance.
+     *
+     * Uses {@link EntityConverter#statusCodeEntitytoDto(StatusCode)} for converting a
+     * single instance
+     *
+     * @param entityList: The List of Entities to be converted
+     * @return a new List of {@link StatusCodeDto} with values provided by the entities
+     */
+    public List<StatusCodeDto> statusCodeEntityListtoDto(List<StatusCode> entityList) {
+        return entityList.stream().map(this::statusCodeEntitytoDto).collect(Collectors.toList());
+    }
+
+    /**
      * Converts a {@link ErrorCode} instance to a {@link ErrorCodeDto} instance
      *
      * @param entity: The Entity to be converted
@@ -124,5 +139,19 @@ public class EntityConverter {
         dto.setErrorCode(entity.getErrorCode());
         dto.setText(entity.getText());
         return dto;
+    }
+
+    /**
+     * Converts a List of {@link ErrorCode} instance to a List of {@link ErrorCodeDto}
+     * instance.
+     *
+     * Uses {@link EntityConverter#errorCodeEntitytoDto(ErrorCode)} for converting a
+     * single instance
+     *
+     * @param entityList: The List of Entities to be converted
+     * @return a new List of {@link ErrorCodeDto} with values provided by the entities
+     */
+    public List<ErrorCodeDto> errorCodeEntityListtoDto(List<ErrorCode> entityList) {
+        return entityList.stream().map(this::errorCodeEntitytoDto).collect(Collectors.toList());
     }
 }

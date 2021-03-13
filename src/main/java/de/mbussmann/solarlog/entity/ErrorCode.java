@@ -1,5 +1,7 @@
 package de.mbussmann.solarlog.entity;
 
+import de.mbussmann.solarlog.boundary.dto.ErrorCodeDto;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,6 +20,12 @@ public class ErrorCode {
 
     public ErrorCode() {
 
+    }
+
+    public ErrorCode(ErrorCodeDto errorCodeDto) {
+        this.inverterTyp = errorCodeDto.getInverterTyp();
+        this.errorCode = errorCodeDto.getErrorCode();
+        this.text = errorCodeDto.getText();
     }
 
     public ErrorCode(String inverterTyp, Long errorCode, String text) {

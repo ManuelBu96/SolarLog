@@ -9,7 +9,6 @@ import java.util.List;
  */
 public interface ErrorCodeService {
     void createErrorCode(ErrorCodeDto newErrorCode);
-    ErrorCodeDto getErrorCode(Long errorCode);
+    ErrorCodeDto getErrorCode(Long code);
     List<ErrorCodeDto> getErrorCode(String inverterTyp);
-    ErrorCode getEntityById(Long id);
 }

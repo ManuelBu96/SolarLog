@@ -1,5 +1,7 @@
 package de.mbussmann.solarlog.entity;
 
+import de.mbussmann.solarlog.boundary.dto.StatusCodeDto;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -16,6 +18,12 @@ public class StatusCode {
 
     public StatusCode() {
 
+    }
+
+    public StatusCode(StatusCodeDto statusCodeDto) {
+        this.inverterTyp = statusCodeDto.getInverterTyp();
+        this.stautsCode = statusCodeDto.getStautsCode();
+        this.text = statusCodeDto.getText();
     }
 
     public StatusCode(String inverterTyp, Long stautsCode, String text) {
