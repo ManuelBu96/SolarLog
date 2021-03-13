@@ -53,6 +53,52 @@ public class EntityConverter {
     }
 
     /**
+     * Converts a List of {@link de.mbussmann.solarlog.entity.System} instance to a List of {@link SystemDto}
+     * instance.
+     *
+     * Uses {@link EntityConverter#systemEntitytoDto(de.mbussmann.solarlog.entity.System)} for converting a
+     * single instance
+     *
+     * @param entityList: The List of Entities to be converted
+     * @return a new List of {@link SystemDto} with values provided by the entities
+     */
+    public List<SystemDto> systemEntityListtoDto(List<System> entityList) {
+        //return entityList.stream().map(entity -> this.systemEntitytoDto(entity)).collect(Collectors.toList());
+        return entityList.stream().map(this::systemEntitytoDto).collect(Collectors.toList());
+    }
+
+    /**
+     * Converts a {@link Inverter} instance to a {@link InverterDto} instance
+     *
+     * @param entity: The Entity to be converted
+     * @return a new {@link InverterDto} with values provided by the entity
+     */
+    public InverterDto inverterEntityDto(Inverter entity) {
+        InverterDto dto = new InverterDto();
+        dto.setSystem(entity.getSystem());
+        dto.setSerial(entity.getSerial());
+        dto.setTyp(entity.getTyp());
+        dto.setName(entity.getName());
+        dto.setStrings(entity.getStrings());
+        dto.setPeak(entity.getPeak());
+        dto.setOrientation(entity.getOrientation());
+        return dto;
+    }
+
+    /**
+     * Converts a List of {@link Inverter} instance to a List of {@link InverterDto}
+     * instance.
+     *
+     * Uses {@link EntityConverter#inverterEntityDto(Inverter)} for converting a
+     * single instance
+     *
+     * @param entityList: The List of Entities to be converted
+     * @return a new List of {@link InverterDto} with values provided by the entities
+     */
+    public List<InverterDto> inverterEntityListDto(List<Inverter> entityList) {
+        return entityList.stream().map(this::inverterEntityDto).collect(Collectors.toList());
+    }
+    /**
      * Converts a {@link StatusCode} instance to a {@link StatusCodeDto} instance
      *
      * @param entity: The Entity to be converted
