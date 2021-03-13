@@ -42,7 +42,7 @@ public class ErrorCodeRepository implements ErrorCodeService {
 
     @Override
     public List<ErrorCodeDto> getErrorCode(String inverterTyp) {
-        return entityConverter.errorCodeEntityListtoDto(em.createQuery("SELECT ec FROM errorode ec WHERE ec.inverter_typ = :typ", ErrorCode.class)
+        return entityConverter.errorCodeEntityListtoDto(em.createQuery("SELECT ec FROM errorCode ec WHERE ec.inverter_typ = :typ", ErrorCode.class)
                 .setParameter("typ", inverterTyp)
                 .getResultList());
     }
