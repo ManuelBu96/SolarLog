@@ -18,8 +18,7 @@ public class InverterStatus {
 
     }
 
-    public InverterStatus(Long id, Inverter inverter, Timestamp timestamp, Long stautsCode) {
-        this.id = id;
+    public InverterStatus(Inverter inverter, Timestamp timestamp, Long stautsCode) {
         this.inverter = inverter;
         this.timestamp = timestamp;
         this.stautsCode = stautsCode;

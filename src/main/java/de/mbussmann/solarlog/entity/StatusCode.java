@@ -18,8 +18,7 @@ public class StatusCode {
 
     }
 
-    public StatusCode(Long id, String inverterTyp, Long stautsCode, String text) {
-        this.id = id;
+    public StatusCode(String inverterTyp, Long stautsCode, String text) {
         this.inverterTyp = inverterTyp;
         this.stautsCode = stautsCode;
         this.text = text;

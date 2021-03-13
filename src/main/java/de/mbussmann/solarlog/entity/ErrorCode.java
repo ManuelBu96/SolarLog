@@ -20,8 +20,7 @@ public class ErrorCode {
 
     }
 
-    public ErrorCode(Long id, String inverterTyp, Long errorCode, String text) {
-        this.id = id;
+    public ErrorCode(String inverterTyp, Long errorCode, String text) {
         this.inverterTyp = inverterTyp;
         this.errorCode = errorCode;
         this.text = text;

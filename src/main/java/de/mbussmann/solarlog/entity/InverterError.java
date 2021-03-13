@@ -18,8 +18,7 @@ public class InverterError {
 
     }
 
-    public InverterError(Long id, Inverter inverter, Timestamp timestamp, Long stautsCode) {
-        this.id = id;
+    public InverterError(Inverter inverter, Timestamp timestamp, Long stautsCode) {
         this.inverter = inverter;
         this.timestamp = timestamp;
         this.errorCode = errorCode;

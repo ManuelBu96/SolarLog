@@ -25,8 +25,7 @@ public class Inverter {
 
     }
 
-    public Inverter(Long id, System system, String serial, String typ, String name, Long strings, Long peak, String orientation) {
-        this.id = id;
+    public Inverter(System system, String serial, String typ, String name, Long strings, Long peak, String orientation) {
         this.system = system;
         this.serial = serial;
         this.typ = typ;

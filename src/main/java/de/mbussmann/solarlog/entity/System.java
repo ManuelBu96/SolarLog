@@ -1,5 +1,7 @@
 package de.mbussmann.solarlog.entity;
 
+import de.mbussmann.solarlog.boundary.dto.SystemDto;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,16 +26,23 @@ public class System {
 
     }
 
-    public System(Long id, String name, String folder, Long inverters, Long compensation) {
-        this.id = id;
+    public System(SystemDto systemDto) {
+        this.name = systemDto.getName();
+        this.folder = systemDto.getFolder();
+        this.startedAt = systemDto.getStartedAt();
+        this.serial = systemDto.getSerial();
+        this.inverters = systemDto.getInverters();
+        this.compensation = systemDto.getCompensation();
+    }
+
+    public System(String name, String folder, Long inverters, Long compensation) {
         this.name = name;
         this.folder = folder;
         this.inverters = inverters;
         this.compensation = compensation;
     }
 
-    public System(Long id, String name, String folder, Timestamp startedAt, Long serial, Long inverters, Long compensation) {
-        this.id = id;
+    public System(String name, String folder, Timestamp startedAt, Long serial, Long inverters, Long compensation) {
         this.name = name;
         this.folder = folder;
         this.startedAt = startedAt;

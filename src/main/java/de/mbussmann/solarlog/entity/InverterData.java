@@ -25,16 +25,14 @@ public class InverterData {
 
     }
 
-    public InverterData(Long id, Inverter inverter, Timestamp timestamp, Long pac_Watt, Long pdc_Watt_1) {
-        this.id = id;
+    public InverterData(Inverter inverter, Timestamp timestamp, Long pac_Watt, Long pdc_Watt_1) {
         this.inverter = inverter;
         this.timestamp = timestamp;
         this.pac_Watt = pac_Watt;
         this.pdc_Watt_1 = pdc_Watt_1;
     }
 
-    public InverterData(Long id, Inverter inverter, Timestamp timestamp, Long pac_Watt, Long pdc_Watt_1, Long pdc_Watt_2) {
-        this.id = id;
+    public InverterData(Inverter inverter, Timestamp timestamp, Long pac_Watt, Long pdc_Watt_1, Long pdc_Watt_2) {
         this.inverter = inverter;
         this.timestamp = timestamp;
         this.pac_Watt = pac_Watt;
@@ -42,8 +40,7 @@ public class InverterData {
         this.pdc_Watt_2 = pdc_Watt_2;
     }
 
-    public InverterData(Long id, Inverter inverter, Timestamp timestamp, Long pac_Watt, Long pdc_Watt_1, Long pdc_Watt_2, Long pdc_Watt_3) {
-        this.id = id;
+    public InverterData(Inverter inverter, Timestamp timestamp, Long pac_Watt, Long pdc_Watt_1, Long pdc_Watt_2, Long pdc_Watt_3) {
         this.inverter = inverter;
         this.timestamp = timestamp;
         this.pac_Watt = pac_Watt;
