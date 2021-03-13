@@ -3,13 +3,11 @@ package de.mbussmann.solarlog.repository;
 import de.mbussmann.solarlog.boundary.dto.InverterDto;
 import de.mbussmann.solarlog.control.InverterService;
 import de.mbussmann.solarlog.entity.Inverter;
-import de.mbussmann.solarlog.entity.System;
 import de.mbussmann.solarlog.util.EntityConverter;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -48,6 +46,11 @@ public class InverterRepository implements InverterService {
         return inverter != null;
     }
 
+    /**
+     * Update {@link Inverter}
+     * @param id {@link Inverter} Id
+     * @param updateInverter Updated {@link InverterDto} Object
+     */
     @Override
     @Transactional
     public void updateInverter(Long id, InverterDto updateInverter) {
@@ -60,6 +63,10 @@ public class InverterRepository implements InverterService {
         }
     }
 
+    /**
+     * Get all {@link Inverter}
+     * @return List of {@link InverterDto}
+     */
     @Override
     public List<InverterDto> getInverters(Long systemId) {
         return entityConverter.inverterEntityListDto(em.createQuery("SELECT i FROM inverter i WHERE i.sytem = :id", Inverter.class)
@@ -68,6 +75,11 @@ public class InverterRepository implements InverterService {
 
     }
 
+    /**
+     * Get one {@link Inverter}
+     * @param inverterId {@link Inverter} Id
+     * @return {@link InverterDto} Object
+     */
     @Override
     public InverterDto getInverter(Long inverterId) {
         Inverter inverter = em.find(Inverter.class,inverterId);
