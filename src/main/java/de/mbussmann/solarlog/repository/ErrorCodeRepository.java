@@ -3,9 +3,7 @@ package de.mbussmann.solarlog.repository;
 import de.mbussmann.solarlog.boundary.dto.ErrorCodeDto;
 import de.mbussmann.solarlog.control.ErrorCodeService;
 import de.mbussmann.solarlog.entity.ErrorCode;
-import de.mbussmann.solarlog.entity.StatusCode;
 import de.mbussmann.solarlog.util.EntityConverter;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;

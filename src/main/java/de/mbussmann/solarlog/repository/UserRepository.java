@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import javax.transaction.Transactional;
-
 import de.mbussmann.solarlog.boundary.dto.UserDto;
 import de.mbussmann.solarlog.control.UserService;
 import de.mbussmann.solarlog.entity.User;

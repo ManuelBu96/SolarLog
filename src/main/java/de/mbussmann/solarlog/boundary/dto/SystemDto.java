@@ -1,6 +1,5 @@
 package de.mbussmann.solarlog.boundary.dto;
 
-import javax.persistence.Column;
 import java.sql.Timestamp;
 
 public class SystemDto {

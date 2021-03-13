@@ -1,7 +1,6 @@
 package de.mbussmann.solarlog.entity;
 
 import de.mbussmann.solarlog.boundary.dto.InverterDto;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;

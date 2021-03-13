@@ -7,13 +7,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
-
 import de.mbussmann.solarlog.boundary.dto.AuthenticationDto;
 import de.mbussmann.solarlog.control.AuthenticationService;
 import de.mbussmann.solarlog.util.exceptions.AuthenticationException;

@@ -1,9 +1,7 @@
 package de.mbussmann.solarlog.entity;
 
 import de.mbussmann.solarlog.boundary.dto.StatusCodeDto;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Entity
 @Table(name = "statusCode", schema = "public")

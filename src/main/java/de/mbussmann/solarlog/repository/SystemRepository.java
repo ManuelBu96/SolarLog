@@ -4,7 +4,6 @@ import de.mbussmann.solarlog.boundary.dto.SystemDto;
 import de.mbussmann.solarlog.control.SystemService;
 import de.mbussmann.solarlog.entity.System;
 import de.mbussmann.solarlog.util.EntityConverter;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;

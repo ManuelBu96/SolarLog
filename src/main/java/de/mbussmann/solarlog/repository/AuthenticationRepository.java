@@ -3,17 +3,14 @@ package de.mbussmann.solarlog.repository;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import javax.transaction.Transactional;
-
 import de.mbussmann.solarlog.logging.UserEvent;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-
 import de.mbussmann.solarlog.boundary.dto.AuthenticationDto;
 import de.mbussmann.solarlog.boundary.dto.RegistrationDto;
 import de.mbussmann.solarlog.control.AuthenticationService;

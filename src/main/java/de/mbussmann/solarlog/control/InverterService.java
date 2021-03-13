@@ -1,7 +1,6 @@
 package de.mbussmann.solarlog.control;
 
 import de.mbussmann.solarlog.boundary.dto.InverterDto;
-
 import java.util.List;
 
 public interface InverterService {

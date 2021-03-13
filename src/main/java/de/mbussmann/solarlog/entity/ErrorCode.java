@@ -1,7 +1,6 @@
 package de.mbussmann.solarlog.entity;
 
 import de.mbussmann.solarlog.boundary.dto.ErrorCodeDto;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
