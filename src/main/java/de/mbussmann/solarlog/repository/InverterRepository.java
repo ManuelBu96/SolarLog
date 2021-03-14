@@ -19,6 +19,7 @@
 package de.mbussmann.solarlog.repository;
 
 import de.mbussmann.solarlog.boundary.dto.InverterDto;
+import de.mbussmann.solarlog.boundary.dto.InverterRespDto;
 import de.mbussmann.solarlog.control.InverterService;
 import de.mbussmann.solarlog.entity.Inverter;
 import de.mbussmann.solarlog.util.EntityConverter;
@@ -82,11 +83,11 @@ public class InverterRepository implements InverterService {
 
     /**
      * Get all {@link Inverter}
-     * @return List of {@link InverterDto}
+     * @return List of {@link InverterRespDto}
      */
     @Override
-    public List<InverterDto> getInverters(Long systemId) {
-        return entityConverter.inverterEntityListDto(em.createQuery("SELECT i FROM inverter i WHERE i.sytem = :id", Inverter.class)
+    public List<InverterRespDto> getInverters(Long systemId) {
+        return entityConverter.inverterEntityListRespDto(em.createQuery("SELECT i FROM inverter i WHERE i.sytem = :id", Inverter.class)
             .setParameter("id", systemId)
             .getResultList());
 
@@ -95,13 +96,13 @@ public class InverterRepository implements InverterService {
     /**
      * Get one {@link Inverter}
      * @param inverterId {@link Inverter} Id
-     * @return {@link InverterDto} Object
+     * @return {@link InverterRespDto} Object
      */
     @Override
-    public InverterDto getInverter(Long inverterId) {
+    public InverterRespDto getInverter(Long inverterId) {
         Inverter inverter = em.find(Inverter.class,inverterId);
         if(inverter != null) {
-            return entityConverter.inverterEntityDto(inverter);
+            return entityConverter.inverterEntityRespDto(inverter);
         }
         return null;
     }

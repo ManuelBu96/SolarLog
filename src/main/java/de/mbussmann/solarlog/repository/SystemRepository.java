@@ -19,6 +19,7 @@
 package de.mbussmann.solarlog.repository;
 
 import de.mbussmann.solarlog.boundary.dto.SystemDto;
+import de.mbussmann.solarlog.boundary.dto.SystemRespDto;
 import de.mbussmann.solarlog.control.SystemService;
 import de.mbussmann.solarlog.entity.System;
 import de.mbussmann.solarlog.util.EntityConverter;
@@ -85,23 +86,23 @@ public class SystemRepository implements SystemService {
 
     /**
      * Get all {@link System}
-     * @return List of {@link SystemDto}
+     * @return List of {@link SystemRespDto}
      */
     @Override
-    public List<SystemDto> getSystems() {
-        return entityConverter.systemEntityListtoDto(em.createQuery("SELECT s FROM system s", System.class).getResultList());
+    public List<SystemRespDto> getSystems() {
+        return entityConverter.systemEntityListtoRespDto(em.createQuery("SELECT s FROM system s", System.class).getResultList());
     }
 
     /**
      * Get one {@link System}
      * @param id {@link System} Id
-     * @return {@link SystemDto} Object
+     * @return {@link SystemRespDto} Object
      */
     @Override
-    public SystemDto getSystem(Long id) {
+    public SystemRespDto getSystem(Long id) {
         System system = em.find(System.class, id);
         if(system != null) {
-            return entityConverter.systemEntitytoDto(system);
+            return entityConverter.systemEntitytoRespDto(system);
         }
         return null;
     }

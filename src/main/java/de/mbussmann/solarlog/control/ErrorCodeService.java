@@ -19,6 +19,8 @@
 package de.mbussmann.solarlog.control;
 
 import de.mbussmann.solarlog.boundary.dto.ErrorCodeDto;
+import de.mbussmann.solarlog.boundary.dto.ErrorCodeRespDto;
+
 import java.util.List;
 
 /**
@@ -26,6 +28,6 @@ import java.util.List;
  */
 public interface ErrorCodeService {
     void createErrorCode(ErrorCodeDto newErrorCode);
-    ErrorCodeDto getErrorCode(Long code);
-    List<ErrorCodeDto> getErrorCode(String inverterTyp);
+    ErrorCodeRespDto getErrorCode(Long code);
+    List<ErrorCodeRespDto> getErrorCode(String inverterTyp);
 }

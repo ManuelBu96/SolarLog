@@ -19,12 +19,14 @@
 package de.mbussmann.solarlog.control;
 
 import de.mbussmann.solarlog.boundary.dto.InverterDto;
+import de.mbussmann.solarlog.boundary.dto.InverterRespDto;
+
 import java.util.List;
 
 public interface InverterService {
     void createInverter(InverterDto newInverter);
     boolean pruefInverter(Long id);
     void updateInverter(Long id, InverterDto updateInverter);
-    List<InverterDto> getInverters(Long systemId);
-    InverterDto getInverter(Long inverterId);
+    List<InverterRespDto> getInverters(Long systemId);
+    InverterRespDto getInverter(Long inverterId);
 }

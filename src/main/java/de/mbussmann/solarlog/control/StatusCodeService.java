@@ -19,6 +19,8 @@
 package de.mbussmann.solarlog.control;
 
 import de.mbussmann.solarlog.boundary.dto.StatusCodeDto;
+import de.mbussmann.solarlog.boundary.dto.StatusCodeRespDto;
+
 import java.util.List;
 
 /**
@@ -26,6 +28,6 @@ import java.util.List;
  */
 public interface StatusCodeService {
     void createStatusCode(StatusCodeDto newStatusCode);
-    StatusCodeDto getStatusCode(Long code);
-    List<StatusCodeDto> getStatusCode(String inverterTyp);
+    StatusCodeRespDto getStatusCode(Long code);
+    List<StatusCodeRespDto> getStatusCode(String inverterTyp);
 }

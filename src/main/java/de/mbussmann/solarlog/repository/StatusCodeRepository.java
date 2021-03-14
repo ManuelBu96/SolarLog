@@ -19,6 +19,7 @@
 package de.mbussmann.solarlog.repository;
 
 import de.mbussmann.solarlog.boundary.dto.StatusCodeDto;
+import de.mbussmann.solarlog.boundary.dto.StatusCodeRespDto;
 import de.mbussmann.solarlog.control.StatusCodeService;
 import de.mbussmann.solarlog.entity.StatusCode;
 import de.mbussmann.solarlog.util.EntityConverter;
@@ -40,6 +41,11 @@ public class StatusCodeRepository implements StatusCodeService {
     @Inject
     EntityConverter entityConverter;
 
+    /**
+     * Create {@link StatusCode}
+     * @param newStatusCode new {@link StatusCodeDto} to be add to Database
+     * @return Response.Status for the Ressource
+     */
     @Override
     @Transactional
     public void createStatusCode(StatusCodeDto newStatusCode) {
@@ -47,18 +53,27 @@ public class StatusCodeRepository implements StatusCodeService {
         em.persist(statusCode);
     }
 
+    /**
+     * Get one {@link StatusCode}
+     * @param code {@link StatusCode} Id
+     * @return {@link StatusCodeRespDto} Object
+     */
     @Override
-    public StatusCodeDto getStatusCode(Long code) {
+    public StatusCodeRespDto getStatusCode(Long code) {
         StatusCode statusCode = em.find(StatusCode.class,code);
         if(statusCode != null) {
-            return entityConverter.statusCodeEntitytoDto(statusCode);
+            return entityConverter.statusCodeEntitytoRespDto(statusCode);
         }
         return null;
     }
 
+    /**
+     * Get all {@link StatusCode}
+     * @return List of {@link StatusCodeRespDto}
+     */
     @Override
-    public List<StatusCodeDto> getStatusCode(String inverterTyp) {
-        return entityConverter.statusCodeEntityListtoDto(em.createQuery("SELECT sc FROM statusCode sc WHERE sc.inverter_typ = :typ", StatusCode.class)
+    public List<StatusCodeRespDto> getStatusCode(String inverterTyp) {
+        return entityConverter.statusCodeEntityListtoRespDto(em.createQuery("SELECT sc FROM statusCode sc WHERE sc.inverter_typ = :typ", StatusCode.class)
                 .setParameter("typ", inverterTyp)
                 .getResultList());
     }

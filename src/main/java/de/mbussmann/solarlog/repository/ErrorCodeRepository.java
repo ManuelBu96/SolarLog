@@ -19,6 +19,7 @@
 package de.mbussmann.solarlog.repository;
 
 import de.mbussmann.solarlog.boundary.dto.ErrorCodeDto;
+import de.mbussmann.solarlog.boundary.dto.ErrorCodeRespDto;
 import de.mbussmann.solarlog.control.ErrorCodeService;
 import de.mbussmann.solarlog.entity.ErrorCode;
 import de.mbussmann.solarlog.util.EntityConverter;
@@ -40,6 +41,11 @@ public class ErrorCodeRepository implements ErrorCodeService {
     @Inject
     EntityConverter entityConverter;
 
+    /**
+     * Create {@link ErrorCode}
+     * @param newErrorCode new {@link ErrorCodeDto} to be add to Database
+     * @return Response.Status for the Ressource
+     */
     @Override
     @Transactional
     public void createErrorCode(ErrorCodeDto newErrorCode) {
@@ -47,18 +53,27 @@ public class ErrorCodeRepository implements ErrorCodeService {
         em.persist(errorCode);
     }
 
+    /**
+     * Get one {@link ErrorCode}
+     * @param code {@link ErrorCode} Id
+     * @return {@link ErrorCodeRespDto} Object
+     */
     @Override
-    public ErrorCodeDto getErrorCode(Long code) {
+    public ErrorCodeRespDto getErrorCode(Long code) {
         ErrorCode errorCode = em.find(ErrorCode.class,code);
         if(errorCode != null) {
-            return entityConverter.errorCodeEntitytoDto(errorCode);
+            return entityConverter.errorCodeEntitytoRespDto(errorCode);
         }
         return null;
     }
 
+    /**
+     * Get all {@link ErrorCode}
+     * @return List of {@link ErrorCodeRespDto}
+     */
     @Override
-    public List<ErrorCodeDto> getErrorCode(String inverterTyp) {
-        return entityConverter.errorCodeEntityListtoDto(em.createQuery("SELECT ec FROM errorCode ec WHERE ec.inverter_typ = :typ", ErrorCode.class)
+    public List<ErrorCodeRespDto> getErrorCode(String inverterTyp) {
+        return entityConverter.errorCodeEntityListtoRespDto(em.createQuery("SELECT ec FROM errorCode ec WHERE ec.inverter_typ = :typ", ErrorCode.class)
                 .setParameter("typ", inverterTyp)
                 .getResultList());
     }

@@ -24,7 +24,6 @@ import de.mbussmann.solarlog.entity.System;
 
 import javax.enterprise.context.Dependent;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -55,13 +54,13 @@ public class EntityConverter {
     }
 
     /**
-     * Converts a {@link de.mbussmann.solarlog.entity.System} instance to a {@link SystemDto} instance
+     * Converts a {@link de.mbussmann.solarlog.entity.System} instance to a {@link SystemRespDto} instance
      *
      * @param entity: The Entity to be converted
-     * @return a new {@link SystemDto} with values provided by the entity
+     * @return a new {@link SystemRespDto} with values provided by the entity
      */
-    public SystemDto systemEntitytoDto(System entity) {
-        SystemDto dto = new SystemDto();
+    public SystemRespDto systemEntitytoRespDto(System entity) {
+        SystemRespDto dto = new SystemRespDto();
         dto.setName(entity.getName());
         dto.setFolder(entity.getFolder());
         dto.setStartedAt(entity.getStartedAt());
@@ -71,28 +70,28 @@ public class EntityConverter {
     }
 
     /**
-     * Converts a List of {@link de.mbussmann.solarlog.entity.System} instance to a List of {@link SystemDto}
+     * Converts a List of {@link de.mbussmann.solarlog.entity.System} instance to a List of {@link SystemRespDto}
      * instance.
      *
-     * Uses {@link EntityConverter#systemEntitytoDto(de.mbussmann.solarlog.entity.System)} for converting a
+     * Uses {@link EntityConverter#systemEntitytoRespDto(de.mbussmann.solarlog.entity.System)} for converting a
      * single instance
      *
      * @param entityList: The List of Entities to be converted
-     * @return a new List of {@link SystemDto} with values provided by the entities
+     * @return a new List of {@link SystemRespDto} with values provided by the entities
      */
-    public List<SystemDto> systemEntityListtoDto(List<System> entityList) {
+    public List<SystemRespDto> systemEntityListtoRespDto(List<System> entityList) {
         //return entityList.stream().map(entity -> this.systemEntitytoDto(entity)).collect(Collectors.toList());
-        return entityList.stream().map(this::systemEntitytoDto).collect(Collectors.toList());
+        return entityList.stream().map(this::systemEntitytoRespDto).collect(Collectors.toList());
     }
 
     /**
-     * Converts a {@link Inverter} instance to a {@link InverterDto} instance
+     * Converts a {@link Inverter} instance to a {@link InverterRespDto} instance
      *
      * @param entity: The Entity to be converted
-     * @return a new {@link InverterDto} with values provided by the entity
+     * @return a new {@link InverterRespDto} with values provided by the entity
      */
-    public InverterDto inverterEntityDto(Inverter entity) {
-        InverterDto dto = new InverterDto();
+    public InverterRespDto inverterEntityRespDto(Inverter entity) {
+        InverterRespDto dto = new InverterRespDto();
         dto.setSystem(entity.getSystem());
         dto.setSerial(entity.getSerial());
         dto.setTyp(entity.getTyp());
@@ -104,27 +103,27 @@ public class EntityConverter {
     }
 
     /**
-     * Converts a List of {@link Inverter} instance to a List of {@link InverterDto}
+     * Converts a List of {@link Inverter} instance to a List of {@link InverterRespDto}
      * instance.
      *
      * Uses {@link EntityConverter#inverterEntityDto(Inverter)} for converting a
      * single instance
      *
      * @param entityList: The List of Entities to be converted
-     * @return a new List of {@link InverterDto} with values provided by the entities
+     * @return a new List of {@link InverterRespDto} with values provided by the entities
      */
-    public List<InverterDto> inverterEntityListDto(List<Inverter> entityList) {
-        return entityList.stream().map(this::inverterEntityDto).collect(Collectors.toList());
+    public List<InverterRespDto> inverterEntityListRespDto(List<Inverter> entityList) {
+        return entityList.stream().map(this::inverterEntityRespDto).collect(Collectors.toList());
     }
 
     /**
-     * Converts a {@link StatusCode} instance to a {@link StatusCodeDto} instance
+     * Converts a {@link StatusCode} instance to a {@link StatusCodeRespDto} instance
      *
      * @param entity: The Entity to be converted
-     * @return a new {@link StatusCodeDto} with values provided by the entity
+     * @return a new {@link StatusCodeRespDto} with values provided by the entity
      */
-    public StatusCodeDto statusCodeEntitytoDto(StatusCode entity) {
-        StatusCodeDto dto = new StatusCodeDto();
+    public StatusCodeRespDto statusCodeEntitytoRespDto(StatusCode entity) {
+        StatusCodeRespDto dto = new StatusCodeRespDto();
         dto.setInverterTyp(entity.getInverterTyp());
         dto.setStautsCode(entity.getStautsCode());
         dto.setText(entity.getText());
@@ -132,27 +131,27 @@ public class EntityConverter {
     }
 
     /**
-     * Converts a List of {@link StatusCode} instance to a List of {@link StatusCodeDto}
+     * Converts a List of {@link StatusCode} instance to a List of {@link StatusCodeRespDto}
      * instance.
      *
-     * Uses {@link EntityConverter#statusCodeEntitytoDto(StatusCode)} for converting a
+     * Uses {@link EntityConverter#statusCodeEntitytoRespDto(StatusCode)} for converting a
      * single instance
      *
      * @param entityList: The List of Entities to be converted
-     * @return a new List of {@link StatusCodeDto} with values provided by the entities
+     * @return a new List of {@link StatusCodeRespDto} with values provided by the entities
      */
-    public List<StatusCodeDto> statusCodeEntityListtoDto(List<StatusCode> entityList) {
-        return entityList.stream().map(this::statusCodeEntitytoDto).collect(Collectors.toList());
+    public List<StatusCodeRespDto> statusCodeEntityListtoRespDto(List<StatusCode> entityList) {
+        return entityList.stream().map(this::statusCodeEntitytoRespDto).collect(Collectors.toList());
     }
 
     /**
-     * Converts a {@link ErrorCode} instance to a {@link ErrorCodeDto} instance
+     * Converts a {@link ErrorCode} instance to a {@link ErrorCodeRespDto} instance
      *
      * @param entity: The Entity to be converted
-     * @return a new {@link ErrorCodeDto} with values provided by the entity
+     * @return a new {@link ErrorCodeRespDto} with values provided by the entity
      */
-    public ErrorCodeDto errorCodeEntitytoDto(ErrorCode entity) {
-        ErrorCodeDto dto = new ErrorCodeDto();
+    public ErrorCodeRespDto errorCodeEntitytoRespDto(ErrorCode entity) {
+        ErrorCodeRespDto dto = new ErrorCodeRespDto();
         dto.setInverterTyp(entity.getInverterTyp());
         dto.setErrorCode(entity.getErrorCode());
         dto.setText(entity.getText());
@@ -160,16 +159,16 @@ public class EntityConverter {
     }
 
     /**
-     * Converts a List of {@link ErrorCode} instance to a List of {@link ErrorCodeDto}
+     * Converts a List of {@link ErrorCode} instance to a List of {@link ErrorCodeRespDto}
      * instance.
      *
-     * Uses {@link EntityConverter#errorCodeEntitytoDto(ErrorCode)} for converting a
+     * Uses {@link EntityConverter#errorCodeEntitytoRespDto(ErrorCode)} for converting a
      * single instance
      *
      * @param entityList: The List of Entities to be converted
-     * @return a new List of {@link ErrorCodeDto} with values provided by the entities
+     * @return a new List of {@link ErrorCodeRespDto} with values provided by the entities
      */
-    public List<ErrorCodeDto> errorCodeEntityListtoDto(List<ErrorCode> entityList) {
-        return entityList.stream().map(this::errorCodeEntitytoDto).collect(Collectors.toList());
+    public List<ErrorCodeRespDto> errorCodeEntityListtoRespDto(List<ErrorCode> entityList) {
+        return entityList.stream().map(this::errorCodeEntitytoRespDto).collect(Collectors.toList());
     }
 }
