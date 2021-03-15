@@ -29,5 +29,5 @@ public interface SystemService {
     void updateSystem(Long id, SystemDto updateSystem);
     List<SystemRespDto> getSystems();
     SystemRespDto getSystem(Long id);
-    void removeSystem(Long id);
+    boolean removeSystem(Long id);
 }
