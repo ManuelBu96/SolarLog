@@ -92,7 +92,7 @@ public class EntityConverter {
      */
     public InverterRespDto inverterEntityRespDto(Inverter entity) {
         InverterRespDto dto = new InverterRespDto();
-        dto.setSystem(entity.getSystem());
+        dto.setSystemId(entity.getSystem().getId());
         dto.setSerial(entity.getSerial());
         dto.setTyp(entity.getTyp());
         dto.setName(entity.getName());
@@ -106,7 +106,7 @@ public class EntityConverter {
      * Converts a List of {@link Inverter} instance to a List of {@link InverterRespDto}
      * instance.
      *
-     * Uses {@link EntityConverter#inverterEntityDto(Inverter)} for converting a
+     * Uses {@link EntityConverter#inverterEntityRespDto(Inverter)} for converting a
      * single instance
      *
      * @param entityList: The List of Entities to be converted
