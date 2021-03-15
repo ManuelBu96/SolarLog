@@ -43,6 +43,16 @@ public class Inverter {
 
     }
 
+    public Inverter(System system, InverterDto newInverter) {
+        this.system = system;
+        this.serial = newInverter.getSerial();
+        this.typ = newInverter.getTyp();
+        this.name = newInverter.getName();
+        this.strings = newInverter.getStrings();
+        this.peak = newInverter.getPeak();
+        this.orientation = newInverter.getOrientation();
+    }
+
     public Inverter(System system, String serial, String typ, String name, Long strings, Long peak, String orientation) {
         this.system = system;
         this.serial = serial;

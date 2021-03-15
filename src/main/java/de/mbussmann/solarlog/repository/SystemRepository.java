@@ -120,6 +120,7 @@ public class SystemRepository implements SystemService {
      * @param id {@link System} Id
      */
     @Override
+    @Transactional
     public boolean removeSystem(Long id) {
         System system = em.find(System.class, id);
         if(system != null) {

@@ -21,7 +21,9 @@ package de.mbussmann.solarlog.repository;
 import de.mbussmann.solarlog.boundary.dto.InverterDto;
 import de.mbussmann.solarlog.boundary.dto.InverterRespDto;
 import de.mbussmann.solarlog.control.InverterService;
+import de.mbussmann.solarlog.control.SystemService;
 import de.mbussmann.solarlog.entity.Inverter;
+import de.mbussmann.solarlog.entity.System;
 import de.mbussmann.solarlog.util.EntityConverter;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
@@ -57,7 +59,8 @@ public class InverterRepository implements InverterService {
     @Override
     @Transactional
     public void createInverter(InverterDto newInverter) {
-        Inverter inverter = new Inverter(newInverter);
+        System system = em.find(System.class,newInverter.getSystemId());
+        Inverter inverter = new Inverter(system, newInverter);
         em.persist(inverter);
     }
 
@@ -103,15 +106,31 @@ public class InverterRepository implements InverterService {
 
     /**
      * Get one {@link Inverter}
-     * @param inverterId {@link Inverter} Id
+     * @param id {@link Inverter} Id
      * @return {@link InverterRespDto} Object
      */
     @Override
-    public InverterRespDto getInverter(Long inverterId) {
-        Inverter inverter = em.find(Inverter.class,inverterId);
+    public InverterRespDto getInverter(Long id) {
+        Inverter inverter = em.find(Inverter.class,id);
         if(inverter != null) {
             return entityConverter.inverterEntityRespDto(inverter);
         }
         return null;
+    }
+
+    /**
+     * Remove {@link System}
+     * @param id {@link System} Id
+     */
+    @Override
+    @Transactional
+    public boolean removeInverter(Long id) {
+        Inverter inverter = em.find(Inverter.class,id);
+        if(inverter != null) {
+            //Add Inverter
+            em.remove(inverter);
+            return true;
+        }
+        return false;
     }
 }

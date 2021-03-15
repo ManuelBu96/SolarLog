@@ -28,5 +28,6 @@ public interface InverterService {
     boolean pruefInverter(Long id);
     void updateInverter(Long id, InverterDto updateInverter);
     List<InverterRespDto> getInverters(Long systemId);
-    InverterRespDto getInverter(Long inverterId);
+    InverterRespDto getInverter(Long id);
+    boolean removeInverter(Long id);
 }
