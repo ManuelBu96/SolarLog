@@ -19,10 +19,8 @@
 package de.mbussmann.solarlog.entity;
 
 import de.mbussmann.solarlog.boundary.dto.InverterDto;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "inverter", schema = "public")
@@ -30,7 +28,8 @@ public class Inverter {
     @Id
     private Long id;
 
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "system_id", nullable = false)
     private System system;
 
     private String serial;
@@ -42,16 +41,6 @@ public class Inverter {
 
     public Inverter() {
 
-    }
-
-    public Inverter(InverterDto inverterDto) {
-        this.system = inverterDto.getSystem();
-        this.serial = inverterDto.getSerial();
-        this.typ = inverterDto.getTyp();
-        this.name = inverterDto.getName();
-        this.strings = inverterDto.getStrings();
-        this.peak = inverterDto.getPeak();
-        this.orientation = inverterDto.getOrientation();
     }
 
     public Inverter(System system, String serial, String typ, String name, Long strings, Long peak, String orientation) {
