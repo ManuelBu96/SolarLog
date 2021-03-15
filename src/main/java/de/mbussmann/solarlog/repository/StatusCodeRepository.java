@@ -23,6 +23,8 @@ import de.mbussmann.solarlog.boundary.dto.StatusCodeRespDto;
 import de.mbussmann.solarlog.control.StatusCodeService;
 import de.mbussmann.solarlog.entity.StatusCode;
 import de.mbussmann.solarlog.util.EntityConverter;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -40,6 +42,12 @@ public class StatusCodeRepository implements StatusCodeService {
 
     @Inject
     EntityConverter entityConverter;
+
+    /**
+     * Boolean if Logging is active
+     */
+    @ConfigProperty(name = "de.mbussmann.solarlog.logging")
+    boolean allowLogging;
 
     /**
      * Create {@link StatusCode}

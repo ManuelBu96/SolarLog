@@ -31,6 +31,7 @@ import de.mbussmann.solarlog.entity.UserRole;
 import de.mbussmann.solarlog.logging.UserEvent;
 import de.mbussmann.solarlog.util.exceptions.ExceptionReason;
 import de.mbussmann.solarlog.util.exceptions.UserException;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
  * @author Manuel Bußmann
@@ -41,7 +42,14 @@ public class UserRepository implements UserService {
     @Inject
     EntityManager em;
 
+    @Inject
     UserEvent userEvent;
+
+    /**
+     * Boolean if Logging is active
+     */
+    @ConfigProperty(name = "de.mbussmann.solarlog.logging")
+    boolean allowLogging;
 
     /**
      * Get a User by ID
@@ -76,16 +84,22 @@ public class UserRepository implements UserService {
                 user.setFirstName(userDto.getFirstName());
                 user.setLastName(userDto.getLastName());
                 em.merge(user);
-                userEvent.successUserInfoUpdateEventInfo(user.getId());
+                if(allowLogging) {
+                    userEvent.successUserInfoUpdateEventInfo(user.getId());
+                }
             }
             catch(PersistenceException e) {
-                userEvent.failedUserInfoUpdateEventInfo(user.getId());
+                if(allowLogging) {
+                    userEvent.failedUserInfoUpdateEventInfo(user.getId());
+                }
                 throw new UserException(String.format(ExceptionReason.CANNOT_CHANGE_OWN_DATA.getReason(),""));
             }
         }
         else {
             if(this.isEmailPresentInDatabase(userDto.getEmail())) {
-                userEvent.failedUserInfoUpdateEventInfo(user.getId());
+                if(allowLogging) {
+                    userEvent.failedUserInfoUpdateEventInfo(user.getId());
+                }
                 throw new UserException(String.format(": "+ExceptionReason.CANNOT_CHANGE_OWN_DATA.getReason(),
                 ExceptionReason.EMAIL_ALREADY_IN_USE.getReason()));
             }
@@ -93,7 +107,9 @@ public class UserRepository implements UserService {
             user.setEmail(userDto.getEmail());
             user.setLastName(userDto.getLastName());
             em.merge(user);
-            userEvent.successUserInfoUpdateEventInfo(user.getId());
+            if(allowLogging) {
+                userEvent.successUserInfoUpdateEventInfo(user.getId());
+            }
         }
     }
 
@@ -107,7 +123,9 @@ public class UserRepository implements UserService {
     public void deleteUser(Long id) throws UserException {
         User user = em.find(User.class, id);
         if(user == null) {
-            userEvent.failedRemoveEventInfo(id);
+            if(allowLogging) {
+                userEvent.failedRemoveEventInfo(id);
+            }
             throw new UserException(ExceptionReason.DELETE_USER_FAILED.getReason());
         }
         if(user.getRole() == UserRole.ADMINISTRATOR) {
@@ -115,12 +133,16 @@ public class UserRepository implements UserService {
                         .setParameter("role", UserRole.ADMINISTRATOR)
                         .getSingleResult();
             if(count == 1) {
-                userEvent.failedRemoveEventInfo(user.getId());
+                if(allowLogging) {
+                    userEvent.failedRemoveEventInfo(user.getId());
+                }
                 throw new UserException(ExceptionReason.CANNOT_DELETE_LAST_ADMIN.getReason());
             }
         }
         em.remove(user);
-        userEvent.successRemoveEventInfo(user.getId());
+        if(allowLogging) {
+            userEvent.successRemoveEventInfo(user.getId());
+        }
     }
 
     /**

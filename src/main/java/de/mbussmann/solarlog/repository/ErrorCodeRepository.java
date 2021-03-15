@@ -23,6 +23,8 @@ import de.mbussmann.solarlog.boundary.dto.ErrorCodeRespDto;
 import de.mbussmann.solarlog.control.ErrorCodeService;
 import de.mbussmann.solarlog.entity.ErrorCode;
 import de.mbussmann.solarlog.util.EntityConverter;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -40,6 +42,12 @@ public class ErrorCodeRepository implements ErrorCodeService {
 
     @Inject
     EntityConverter entityConverter;
+
+    /**
+     * Boolean if Logging is active
+     */
+    @ConfigProperty(name = "de.mbussmann.solarlog.logging")
+    boolean allowLogging;
 
     /**
      * Create {@link ErrorCode}

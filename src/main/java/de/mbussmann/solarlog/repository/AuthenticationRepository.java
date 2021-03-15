@@ -64,6 +64,12 @@ public class AuthenticationRepository implements AuthenticationService {
     UserEvent userEvent;
 
     /**
+     * Boolean if Logging is active
+     */
+    @ConfigProperty(name = "de.mbussmann.solarlog.logging")
+    boolean allowLogging;
+
+    /**
      * Login into the System
      * @param user User who wants to Logn
      * @return generatedSecurity Token
@@ -76,24 +82,36 @@ public class AuthenticationRepository implements AuthenticationService {
             User possibleUser = em.createQuery("SELECT u from User u where u.email = :email", User.class)
                     .setParameter("email", user.getEmail()).getSingleResult();
             if (this.passwordUtility.isPasswordValid(user.getPassword(), possibleUser.getPassword())) {
-                userEvent.successLoginEventInfo(possibleUser.getId());
+                if(allowLogging) {
+                    userEvent.successLoginEventInfo(possibleUser.getId());
+                }
                 return this.jwtUtility.generateToken(possibleUser.getId(),possibleUser.getFirstName(), possibleUser.getLastName(),
                         possibleUser.getRole().toString(), duration, issuer);
             } else {
-                userEvent.wrongCredentialsEventInfo(user.getEmail());
+                if(allowLogging) {
+                    userEvent.wrongCredentialsEventInfo(user.getEmail());
+                }
                 throw new AuthenticationException(ExceptionReason.USERNAME_OR_PASSWORD_INCORRECT.getReason());
             }
         } catch (NoResultException ex) {
-            userEvent.failedLoginEventInfo(user.getEmail());
+            if(allowLogging) {
+                userEvent.failedLoginEventInfo(user.getEmail());
+            }
             throw new AuthenticationException(ExceptionReason.USERNAME_OR_PASSWORD_INCORRECT.getReason());
         } catch (NoSuchAlgorithmException e) {
-            userEvent.failedLoginEventInfo(user.getEmail());
+            if(allowLogging) {
+                userEvent.failedLoginEventInfo(user.getEmail());
+            }
             throw new AuthenticationException(ExceptionReason.JWT_GENERATION_ERROR.getReason());
         } catch (InvalidKeySpecException e) {
-            userEvent.failedLoginEventInfo(user.getEmail());
+            if(allowLogging) {
+                userEvent.failedLoginEventInfo(user.getEmail());
+            }
             throw new AuthenticationException(ExceptionReason.JWT_GENERATION_ERROR.getReason());
         } catch (IOException e) {
-            userEvent.failedLoginEventInfo(user.getEmail());
+            if(allowLogging) {
+                userEvent.failedLoginEventInfo(user.getEmail());
+            }
             throw new AuthenticationException(ExceptionReason.JWT_GENERATION_ERROR.getReason());
         }
     }
@@ -114,9 +132,13 @@ public class AuthenticationRepository implements AuthenticationService {
             user.setLastName(newUser.getLastName());
             user.setRole(UserRole.USER);
             em.persist(user);
-            userEvent.successRegisterEventInfo(user.getId());
+            if(allowLogging) {
+                userEvent.successRegisterEventInfo(user.getId());
+            }
         }catch(PersistenceException e) {
-            userEvent.failedRegisterEventInfo(newUser.getEmail());
+            if(allowLogging) {
+                userEvent.failedRegisterEventInfo(newUser.getEmail());
+            }
             throw new AuthenticationException(ExceptionReason.EMAIL_ALREADY_IN_USE.getReason());
         }
     }

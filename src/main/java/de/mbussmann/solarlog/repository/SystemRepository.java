@@ -23,6 +23,8 @@ import de.mbussmann.solarlog.boundary.dto.SystemRespDto;
 import de.mbussmann.solarlog.control.SystemService;
 import de.mbussmann.solarlog.entity.System;
 import de.mbussmann.solarlog.util.EntityConverter;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -40,6 +42,12 @@ public class SystemRepository implements SystemService {
 
     @Inject
     EntityConverter entityConverter;
+
+    /**
+     * Boolean if Logging is active
+     */
+    @ConfigProperty(name = "de.mbussmann.solarlog.logging")
+    boolean allowLogging;
 
     /**
      * Create {@link System}
