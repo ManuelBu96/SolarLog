@@ -120,11 +120,13 @@ public class SystemRepository implements SystemService {
      * @param id {@link System} Id
      */
     @Override
-    public void removeSystem(Long id) {
+    public boolean removeSystem(Long id) {
         System system = em.find(System.class, id);
         if(system != null) {
             //Add Inverter
             em.remove(system);
+            return true;
         }
+        return false;
     }
 }
