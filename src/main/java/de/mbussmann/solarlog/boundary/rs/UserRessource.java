@@ -27,7 +27,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 import org.eclipse.microprofile.jwt.JsonWebToken;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -39,6 +41,7 @@ import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement
 import de.mbussmann.solarlog.boundary.dto.UserDto;
 import de.mbussmann.solarlog.control.UserService;
 import de.mbussmann.solarlog.util.exceptions.UserException;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 /**
  * @author Manuel Bußmann
@@ -55,6 +58,7 @@ public class UserRessource {
 
     @GET
     @RolesAllowed({"ADMINISTRATOR", "USER"})
+    @SecurityRequirement(name = "apiKey")
     @APIResponses(
             value = {
                     @APIResponse(
@@ -65,7 +69,10 @@ public class UserRessource {
                     )
             }
     )
-    @SecurityRequirement(name = "apiKey")
+    @Operation(
+            summary = "getUser",
+            description = "Get a User by Id")
+    @Tag(name = "User", description = "User API")
     public Response getUserById() {
         Long id = Long.valueOf(token.getClaim("id"));
         if(id == null) {
@@ -82,6 +89,7 @@ public class UserRessource {
 
     @PUT
     @RolesAllowed({"ADMINISTRATOR", "USER"})
+    @SecurityRequirement(name = "apiKey")
     @APIResponses(
             value = {
                     @APIResponse(
@@ -97,7 +105,10 @@ public class UserRessource {
                     )
             }
     )
-    @SecurityRequirement(name = "apiKey")
+    @Operation(
+            summary = "changeUserData",
+            description = "Change User Data by Id")
+    @Tag(name = "User", description = "User API")
     public Response changeOwnData(
             @Parameter(
                     description = "User Object",
@@ -118,6 +129,7 @@ public class UserRessource {
 
     @DELETE
     @RolesAllowed({"ADMINISTRATOR", "USER"})
+    @SecurityRequirement(name = "apiKey")
     @APIResponses(
             value = {
                     @APIResponse(
@@ -132,7 +144,10 @@ public class UserRessource {
                     )
             }
     )
-    @SecurityRequirement(name = "apiKey")
+    @Operation(
+            summary = "deleteUser",
+            description = "Delete Own loggedin User")
+    @Tag(name = "User", description = "User API")
     public Response deleteOwnUser() {
         Long id = Long.valueOf(token.getClaim("id"));
         try{
