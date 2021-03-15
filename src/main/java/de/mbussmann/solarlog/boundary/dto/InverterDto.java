@@ -21,7 +21,7 @@ package de.mbussmann.solarlog.boundary.dto;
 import de.mbussmann.solarlog.entity.System;
 
 public class InverterDto {
-    private System system;
+    private Long systemId;
     private String serial;
     private String typ;
     private String name;
@@ -38,7 +38,7 @@ public class InverterDto {
 
     /**
      * Constructor {@link InverterDto}
-     * @param system {@link System}
+     * @param systemId {@link System} Id
      * @param serial Serial of the {@link InverterDto}
      * @param typ Type
      * @param name Name
@@ -46,8 +46,8 @@ public class InverterDto {
      * @param peak Production peak
      * @param orientation Panel Orientation
      */
-    public InverterDto(System system, String serial, String typ, String name, Long strings, Long peak, String orientation) {
-        this.system = system;
+    public InverterDto(Long systemId, String serial, String typ, String name, Long strings, Long peak, String orientation) {
+        this.systemId = systemId;
         this.serial = serial;
         this.typ = typ;
         this.name = name;
@@ -56,12 +56,26 @@ public class InverterDto {
         this.orientation = orientation;
     }
 
-    public System getSystem() {
-        return system;
+    /**
+     * Check whether not empty
+     * @return Status if content null
+     */
+    public boolean isEmpty() {
+        return this.systemId == null ||
+                this.serial == null ||
+                this.typ.isEmpty() ||
+                this.name.isEmpty() ||
+                this.strings == null ||
+                this.peak == null ||
+                this.orientation.isEmpty();
     }
 
-    public void setSystem(System system) {
-        this.system = system;
+    public Long getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Long systemId) {
+        this.systemId = systemId;
     }
 
     public String getSerial() {

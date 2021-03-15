@@ -23,11 +23,8 @@ import de.mbussmann.solarlog.entity.System;
 /**
  * @author Manuel Bußmann
  */
-public class StatusCodeRespDto {
+public class StatusCodeRespDto extends StatusCodeDto{
     private Long id;
-    private String inverterTyp;
-    private Long stautsCode;
-    private String text;
 
     /**
      * Default Constructor
@@ -44,9 +41,8 @@ public class StatusCodeRespDto {
      * @param text StautsCode Text
      */
     public StatusCodeRespDto(Long id, String inverterTyp, Long stautsCode, String text) {
-        this.inverterTyp = inverterTyp;
-        this.stautsCode = stautsCode;
-        this.text = text;
+        super(inverterTyp, stautsCode, text);
+        this.id = id;
     }
 
     public Long getId() {
@@ -55,29 +51,5 @@ public class StatusCodeRespDto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getInverterTyp() {
-        return inverterTyp;
-    }
-
-    public void setInverterTyp(String inverterTyp) {
-        this.inverterTyp = inverterTyp;
-    }
-
-    public Long getStautsCode() {
-        return stautsCode;
-    }
-
-    public void setStautsCode(Long stautsCode) {
-        this.stautsCode = stautsCode;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 }

@@ -45,6 +45,16 @@ public class ErrorCodeDto {
         this.text = text;
     }
 
+    /**
+     * Check whether not empty
+     * @return Status if content null
+     */
+    public boolean isEmpty() {
+        return this.inverterTyp.isEmpty() ||
+                this.errorCode == null ||
+                this.text.isEmpty();
+    }
+
     public String getInverterTyp() {
         return inverterTyp;
     }

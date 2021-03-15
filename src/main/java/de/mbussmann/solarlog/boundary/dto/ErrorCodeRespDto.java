@@ -23,11 +23,8 @@ import de.mbussmann.solarlog.entity.System;
 /**
  * @author Manuel Bußmann
  */
-public class ErrorCodeRespDto {
+public class ErrorCodeRespDto extends ErrorCodeDto {
     private Long id;
-    private String inverterTyp;
-    private Long errorCode;
-    private String text;
 
     /**
      * Default Constructor
@@ -44,9 +41,8 @@ public class ErrorCodeRespDto {
      * @param text ErrorCode Text
      */
     public ErrorCodeRespDto(Long id, String inverterTyp, Long errorCode, String text) {
-        this.inverterTyp = inverterTyp;
-        this.errorCode = errorCode;
-        this.text = text;
+        super(inverterTyp, errorCode, text);
+        this.id = id;
     }
 
     public Long getId() {
@@ -55,29 +51,5 @@ public class ErrorCodeRespDto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getInverterTyp() {
-        return inverterTyp;
-    }
-
-    public void setInverterTyp(String inverterTyp) {
-        this.inverterTyp = inverterTyp;
-    }
-
-    public Long getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(Long errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 }

@@ -52,6 +52,17 @@ public class SystemDto {
         this.compensation = compensation;
     }
 
+    /**
+     * Check whether not empty
+     * @return Status if content null
+     */
+    public boolean isEmpty() {
+        return this.name.isEmpty() ||
+                this.folder.isEmpty() ||
+                this.inverters == null ||
+                this.compensation == null;
+    }
+
     public String getName() {
         return name;
     }
