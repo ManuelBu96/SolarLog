@@ -71,7 +71,7 @@ public class UserRessource {
     )
     @Operation(
             summary = "getUser",
-            description = "Get a User by Id")
+            description = "Get the own User")
     @Tag(name = "User", description = "User API")
     public Response getUserById() {
         Long id = Long.valueOf(token.getClaim("id"));
