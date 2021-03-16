@@ -1,0 +1,2 @@
+--INSERT INTO system(id, name, folder, started_at, serial, inverters, compensation)
+--VALUES (1, 'test-1' 'test1', '2021-03-15 08:00:00', '123456', '6', '50');
