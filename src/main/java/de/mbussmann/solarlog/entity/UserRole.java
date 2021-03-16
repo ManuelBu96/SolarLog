@@ -25,4 +25,5 @@ public enum UserRole {
     ADMINISTRATOR,
     MANAGER,
     USER,
+    VIEWER
 }
