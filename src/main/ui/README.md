@@ -1,6 +1,8 @@
 # AngularSolarlog
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
+
+## Example
+https://github.com/fossasia/susi.ai
 
 ## Development server
 
