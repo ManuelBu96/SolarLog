@@ -1,5 +1,5 @@
 # SolarLog project
-![Maven](https://github.com/ManuelBu96/SolarLogAPI/workflows/Java%20CI%20with%20Maven/badge.svg)
+[![dev-test](https://github.com/ManuelBu96/SolarLog/actions/workflows/maven.yml/badge.svg?event=push)](https://github.com/ManuelBu96/SolarLog/actions/workflows/maven.yml)
 ![CodeQL](https://github.com/ManuelBu96/SolarLogAPI/workflows/CodeQL/badge.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/ManuelBu96/SolarLogAPI/blob/master/LICENSE)
 
