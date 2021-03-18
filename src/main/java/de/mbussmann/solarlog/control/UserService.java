@@ -26,8 +26,11 @@ import de.mbussmann.solarlog.util.exceptions.UserException;
  * @author Manuel Bußmann
  */
 public interface UserService {
+    boolean pruefUser(Long id);
     UserDto getUserById(Long id) throws UserException;
     void changeOwnUserData(UserDto userDto) throws UserException;
+    void changeUserRole(UserDto userDto) throws UserException;
+    boolean checkUserAdmin(Long id);
     void deleteUser(Long id)  throws UserException;
     User getEntity(Long id);
     User getUserByEmail(String email);

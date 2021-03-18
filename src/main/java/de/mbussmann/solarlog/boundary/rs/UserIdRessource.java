@@ -18,16 +18,9 @@
 
 package de.mbussmann.solarlog.boundary.rs;
 
-import javax.annotation.security.RolesAllowed;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
+import de.mbussmann.solarlog.boundary.dto.UserDto;
+import de.mbussmann.solarlog.control.UserService;
+import de.mbussmann.solarlog.util.exceptions.UserException;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
@@ -38,17 +31,21 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
-import de.mbussmann.solarlog.boundary.dto.UserDto;
-import de.mbussmann.solarlog.control.UserService;
-import de.mbussmann.solarlog.util.exceptions.UserException;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+
+import javax.annotation.security.RolesAllowed;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * @author Manuel Bußmann
  */
 @RequestScoped
-@Path("/user")
-public class UserRessource {
+@Path("/user/{id}")
+public class UserIdRessource {
     
     @Inject
     JsonWebToken token;
@@ -56,45 +53,14 @@ public class UserRessource {
     @Inject
     UserService service;
 
-    @GET
-    @RolesAllowed({"ADMINISTRATOR", "USER"})
-    @SecurityRequirement(name = "apiKey")
-    @APIResponses(
-            value = {
-                    @APIResponse(
-                            responseCode = "200",
-                            description = "Get User Data",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(type = SchemaType.OBJECT, implementation = UserDto.class))
-                    )
-            }
-    )
-    @Operation(
-            summary = "getUser",
-            description = "Get the own User")
-    @Tag(name = "User", description = "User API")
-    public Response getUserById() {
-        Long id = Long.valueOf(token.getClaim("id"));
-        if(id == null) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-        try {
-            return Response.status(Response.Status.OK)
-                .entity(this.service.getUserById(id))
-                .type(MediaType.APPLICATION_JSON).build();
-        } catch (UserException e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).type(MediaType.TEXT_PLAIN).build();
-        }
-    }
-
     @PUT
-    @RolesAllowed({"ADMINISTRATOR", "USER"})
+    @RolesAllowed({"ADMINISTRATOR"})
     @SecurityRequirement(name = "apiKey")
     @APIResponses(
             value = {
                     @APIResponse(
                             responseCode = "200",
-                            description = "Update User Data",
+                            description = "Update User Role",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(type = SchemaType.OBJECT, implementation = UserDto.class))
                     ),
@@ -106,35 +72,43 @@ public class UserRessource {
             }
     )
     @Operation(
-            summary = "changeUserData",
-            description = "Change Own User Data")
+            summary = "changeUserRole",
+            description = "Change User Role by Id")
     @Tag(name = "User", description = "User API")
-    public Response changeOwnData(
+    public Response changeUserRole(
+            @Parameter(
+                    description = "User Id",
+                    required = true, example = "1",
+                    schema = @Schema(type = SchemaType.NUMBER))
+            @PathParam("id") Long id,
             @Parameter(
                     description = "User Object",
                     required = true,
                     schema = @Schema(type = SchemaType.OBJECT))
             @RequestBody UserDto userDto) {
-        Long id = Long.valueOf(token.getClaim("id"));
-        if(id !=  userDto.getId()) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("CANNOT CHANGE ID").type(MediaType.TEXT_PLAIN).build();
+        Long own_id = Long.valueOf(token.getClaim("id"));
+        if(id.equals(userDto.getId())) {
+            if(service.checkUserAdmin(own_id)) {
+                try{
+                    this.service.changeUserRole(userDto);
+                }catch(UserException e) {
+                    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).type(MediaType.TEXT_PLAIN).build();
+                }
+                return Response.ok(userDto).type(MediaType.APPLICATION_JSON).build();
+            }
+            return Response.status(Response.Status.FORBIDDEN).build();
         }
-        try{
-            this.service.changeOwnUserData(userDto);
-        }catch(UserException e) {
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).type(MediaType.TEXT_PLAIN).build();
-        }
-        return Response.ok(userDto).type(MediaType.APPLICATION_JSON).build();
+        return Response.status(Response.Status.CONFLICT).build();
     }
 
     @DELETE
-    @RolesAllowed({"ADMINISTRATOR", "USER"})
+    @RolesAllowed({"ADMINISTRATOR"})
     @SecurityRequirement(name = "apiKey")
     @APIResponses(
             value = {
                     @APIResponse(
                             responseCode = "200",
-                            description = "Remove Own User",
+                            description = "Remove User",
                             content = @Content(mediaType = "text/plain")
                     ),
                     @APIResponse(
@@ -148,13 +122,24 @@ public class UserRessource {
             summary = "deleteUser",
             description = "Delete Own loggedin User")
     @Tag(name = "User", description = "User API")
-    public Response deleteOwnUser() {
-        Long id = Long.valueOf(token.getClaim("id"));
-        try{
-            this.service.deleteUser(id);
-            return Response.ok("Delete Successfull").type(MediaType.TEXT_PLAIN).build();
-        }catch(UserException e) {
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).type(MediaType.TEXT_PLAIN).build();
+    public Response deleteUser(
+            @Parameter(
+                    description = "User Id",
+                    required = true, example = "1",
+                    schema = @Schema(type = SchemaType.NUMBER))
+            @PathParam("id") Long id) {
+        Long own_id = Long.valueOf(token.getClaim("id"));
+        if(service.pruefUser(id)) {
+            if(service.checkUserAdmin(own_id)) {
+                try {
+                    this.service.deleteUser(id);
+                    return Response.ok("Delete Successfull").type(MediaType.TEXT_PLAIN).build();
+                } catch (UserException e) {
+                    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).type(MediaType.TEXT_PLAIN).build();
+                }
+            }
+            return Response.status(Response.Status.FORBIDDEN).build();
         }
+        return Response.status(Response.Status.BAD_REQUEST).build();
     }
 }

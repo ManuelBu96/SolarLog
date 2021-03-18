@@ -51,6 +51,12 @@ public class UserRepository implements UserService {
     @ConfigProperty(name = "de.mbussmann.solarlog.logging")
     boolean allowLogging;
 
+    @Override
+    public boolean pruefUser(Long id) {
+        User user = em.find(User.class, id);
+        return user != null;
+    }
+
     /**
      * Get a User by ID
      * @param id UserID
@@ -111,6 +117,48 @@ public class UserRepository implements UserService {
                 userEvent.successUserInfoUpdateEventInfo(user.getId());
             }
         }
+    }
+
+    /**
+     * Change the User Role
+     * @param userDto UserDTO Object
+     * @throws UserException Detailed Error Message
+     */
+    @Override
+    @Transactional
+    public void changeUserRole(UserDto userDto) throws UserException {
+        User user = em.find(User.class, userDto.getId());
+        if(userDto.getEmail().equals(user.getEmail())){
+            UserRole role = UserRole.valueOf(userDto.getRole());
+            try{
+                user.setRole(role);
+                em.merge(user);
+                if(allowLogging) {
+                    userEvent.successUserRoleUpdateEventInfo(user.getId(), userDto.getRole());
+                }
+            }
+            catch(PersistenceException e) {
+                if(allowLogging) {
+                    userEvent.failedUserRoleUpdateEventInfo(user.getId(), userDto.getRole());
+                }
+                throw new UserException(String.format(ExceptionReason.CANNOT_CHANGE_USER_ROLE.getReason()));
+            }
+        }
+    }
+
+    /**
+     * Check whether the user is an admin
+     * @param id User Id
+     */
+    @Override
+    public boolean checkUserAdmin(Long id) {
+        User user = em.find(User.class, id);
+        if(user != null) {
+            if(user.getRole().equals(UserRole.ADMINISTRATOR)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

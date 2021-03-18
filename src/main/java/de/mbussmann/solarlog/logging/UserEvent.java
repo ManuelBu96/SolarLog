@@ -76,12 +76,28 @@ public class UserEvent {
         LOG.info("User with id="+userId+" updated his Information.");
     }
 
-    /**
+        /**
      * Event if User Info Update failed
      * @param userId UserId
      */
     public void failedUserInfoUpdateEventInfo(Long userId) {
         LOG.info("User with id="+userId+" can not updated his Information.");
+    }
+
+    /**
+     * Event if User Role Update work
+     * @param userId UserId
+     */
+    public void successUserRoleUpdateEventInfo(Long userId, String role) {
+        LOG.info("User with id="+userId+" now in Role="+role+".");
+    }
+
+    /**
+     * Event if User Info Update failed
+     * @param userId UserId
+     */
+    public void failedUserRoleUpdateEventInfo(Long userId, String role) {
+        LOG.info("User with id="+userId+" can not get Role="+role+".");
     }
 
     /**
