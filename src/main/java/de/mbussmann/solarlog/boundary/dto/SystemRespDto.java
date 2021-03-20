@@ -21,6 +21,9 @@ package de.mbussmann.solarlog.boundary.dto;
 import de.mbussmann.solarlog.entity.System;
 import java.sql.Timestamp;
 
+/**
+ * @author Manuel Bußmann
+ */
 public class SystemRespDto extends SystemDto{
     private Long id;
 

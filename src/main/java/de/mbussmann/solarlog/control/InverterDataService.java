@@ -18,6 +18,9 @@
 
 package de.mbussmann.solarlog.control;
 
+/**
+ * @author Manuel Bußmann
+ */
 public interface InverterDataService {
 
 }

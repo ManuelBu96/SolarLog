@@ -21,6 +21,9 @@ package de.mbussmann.solarlog.entity;
 import de.mbussmann.solarlog.boundary.dto.StatusCodeDto;
 import javax.persistence.*;
 
+/**
+ * @author Manuel Bußmann
+ */
 @Entity
 @Table(name = "statusCode", schema = "public")
 public class StatusCode {

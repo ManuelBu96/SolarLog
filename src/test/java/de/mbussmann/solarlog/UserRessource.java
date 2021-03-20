@@ -11,6 +11,11 @@ import javax.inject.Inject;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * Class for Test the UserRessource API
+ *
+ * @author Manuel Bußmann
+ */
 @QuarkusTest
 public class UserRessource {
     @Inject

@@ -25,6 +25,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Timestamp;
 
+/**
+ * @author Manuel Bußmann
+ */
 @Entity
 @Table(name = "system", schema = "public")
 public class System {

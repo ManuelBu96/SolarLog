@@ -21,6 +21,9 @@ package de.mbussmann.solarlog.entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+/**
+ * @author Manuel Bußmann
+ */
 @Entity
 @Table(name = "inverterStatus", schema = "public")
 public class InverterStatus {

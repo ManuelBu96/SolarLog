@@ -23,6 +23,9 @@ import de.mbussmann.solarlog.boundary.dto.SystemRespDto;
 
 import java.util.List;
 
+/**
+ * @author Manuel Bußmann
+ */
 public interface SystemService {
     void createSystem(SystemDto newSystem);
     boolean pruefSystem(Long id);

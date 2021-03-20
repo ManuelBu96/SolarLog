@@ -33,6 +33,11 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * Class for Testing algorithm
+ *
+ * @author Manuel Bußmann
+ */
 @ApplicationScoped
 public class Helper {
     @Inject

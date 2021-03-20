@@ -18,6 +18,9 @@
 
 package de.mbussmann.solarlog.boundary.dto;
 
+/**
+ * @author Manuel Bußmann
+ */
 public class InverterRespDto extends InverterDto {
     private Long id;
 

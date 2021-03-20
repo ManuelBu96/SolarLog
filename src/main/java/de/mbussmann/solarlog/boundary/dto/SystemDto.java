@@ -20,6 +20,9 @@ package de.mbussmann.solarlog.boundary.dto;
 
 import java.sql.Timestamp;
 
+/**
+ * @author Manuel Bußmann
+ */
 public class SystemDto {
     private String name;
     private String folder;

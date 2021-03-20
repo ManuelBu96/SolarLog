@@ -24,6 +24,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.sql.Timestamp;
 
+/**
+ * @author Manuel Bußmann
+ */
 @Entity
 @Table(name = "inverterData", schema = "public")
 public class InverterData {

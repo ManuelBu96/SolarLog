@@ -23,6 +23,9 @@ import de.mbussmann.solarlog.boundary.dto.InverterRespDto;
 
 import java.util.List;
 
+/**
+ * @author Manuel Bußmann
+ */
 public interface InverterService {
     void createInverter(InverterDto newInverter);
     boolean pruefInverter(Long id);

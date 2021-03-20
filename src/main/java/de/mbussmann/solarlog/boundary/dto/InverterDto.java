@@ -20,6 +20,9 @@ package de.mbussmann.solarlog.boundary.dto;
 
 import de.mbussmann.solarlog.entity.System;
 
+/**
+ * @author Manuel Bußmann
+ */
 public class InverterDto {
     private Long systemId;
     private String serial;

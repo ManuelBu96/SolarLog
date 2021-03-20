@@ -24,6 +24,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author Manuel Bußmann
+ */
 @Entity
 @Table(name = "errorCode", schema = "public")
 public class ErrorCode {

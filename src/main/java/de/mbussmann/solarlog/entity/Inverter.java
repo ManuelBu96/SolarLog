@@ -22,6 +22,9 @@ import de.mbussmann.solarlog.boundary.dto.InverterDto;
 
 import javax.persistence.*;
 
+/**
+ * @author Manuel Bußmann
+ */
 @Entity
 @Table(name = "inverter", schema = "public")
 public class Inverter {
