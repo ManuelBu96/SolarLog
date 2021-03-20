@@ -44,7 +44,6 @@ public class UserDto {
      * @param lastName User Last Name
      * @param role User Role as String
      * @param email User Mail
-     * @param isChatEnabled User ChatEnabled
      */
     public UserDto(Long id, String firstName, String lastName, String role, String email) {
         this.id = id;
@@ -61,7 +60,6 @@ public class UserDto {
      * @param lastName User Last Name
      * @param role User Role as Object
      * @param email User Mail
-     * @param isChatEnabled User ChatEnabled
      */
     public UserDto(Long id, String firstName, String lastName, UserRole role, String email) {
         this.id = id;
