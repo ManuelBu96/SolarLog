@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: solarlog
+    networks: 
+      - database-network
+#For Production
+#    volumes:
+#      - ./postgres-data:/var/lib/postgresql/data
+
+#Only for Development
+  solarlog-pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 5555:80
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - ./server.json:/pgadmin4/servers.json
+    networks: 
+      - database-network
+
+networks: 
+  database-network:
+    driver: bridge
