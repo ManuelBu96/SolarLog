@@ -61,7 +61,7 @@ public class JWTUtility {
         long currentTimeInSecs = this.currentTimeInSecs();
 
         claimsBuilder.issuer(issuer);
-        claimsBuilder.subject("onlineforum");
+        claimsBuilder.subject("solarlog");
         claimsBuilder.issuedAt(currentTimeInSecs);
         claimsBuilder.expiresAt(currentTimeInSecs + duration);
         claimsBuilder.groups(role);

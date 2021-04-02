@@ -40,6 +40,8 @@ nb-configuration.xml
 
 #Local Files for Development
 data/
+docker-compose-testLocal.yml
+docker-compose-testRemote.yml
 
 #Local DockerFiles
 # Postgres Database
